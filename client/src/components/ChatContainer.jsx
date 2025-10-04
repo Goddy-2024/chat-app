@@ -7,15 +7,22 @@ const ChatContainer = ({selectedChat, setSelectedChat}) => {
   
   useEffect(()=>{
     if(scrollEnd.current){
-      scrollEnd.current.scrollIntoView({behavior:""})
+      scrollEnd.current.scrollIntoView({behavior:"smooth"})
     }
   }, [])
   
   
   
   return selectedChat ? (
+   
     <div className='h-full overflow-scroll relative backdrop-blur-lg'>
+      {/*The parent div that contains all the chat elements of the chat container*/}
+
+
+
       <div className='flex items-center gap-3 py-3 mx-4 border-b border-stone-500'>
+        { /*This is the heading that contains the profile picture and the chat name*/}
+
         <img src={assets.godswill_profile} alt="" className='w-8 rounded-full '/>
         <p className='flex-1 text-lg text-white flex items-center gap-2'>
           Lucky
@@ -23,17 +30,14 @@ const ChatContainer = ({selectedChat, setSelectedChat}) => {
         </p>
         <img onClick={()=>setSelectedChat(null)} src={assets.arrow_icon} alt="" className='md:hidden max-w-7'/>
         <img src={assets.help_icon} alt="" className='max-md:hidden max-w-5'/>
-        </div>
+      </div>
       
         {/*
-        
-        
-        This is the Chat area
-        
-        
+        <-------- This is the Chat area --------->
         */
         }
-        <div className='flex flex-col h-[clac(100%-120px)] overflow-y-scroll p-3 pb-6'>
+
+        <div className='flex flex-col h-[calc(100%-120px)] overflow-y-scroll p-2 pb-10'>
           {messagesScriptData.map((msg, index)=>(
             <div key={index} className={`flex items-end gap-2 justify-end 
               ${msg.senderId !== '680f50e4f10f3cd28382ecf9' && 'flex-row-reverse'}`}>
@@ -77,7 +81,7 @@ Bottom input Section
         </label>
       </div>
       <img src={assets.send_button} alt="" className='w-7 cursor-pointer'/>
-    </div>
+      </div>
     </div>
 
 
@@ -85,8 +89,8 @@ Bottom input Section
         
       /**
        * 
-       * An Exception for conditional rendering when the chat is in a not
-       * Selected State
+       * An Exception for conditional rendering when the chat is in a 
+       * not-Selected State
        * 
        */
     
